@@ -1,0 +1,479 @@
+{
+  "story_meta": {
+    "id": "treasure_mystery_001",
+    "version": "1.0.0",
+    "created_date": "2025-05-28",
+    "estimated_duration_minutes": 8,
+    "difficulty_level": "medium",
+    "category": "adventure",
+    "tags": ["mystery", "treasure", "ancient", "puzzle"]
+  },
+  
+  "channel_config": {
+    "source_channel": "kahraman_benim",
+    "language": "tr",
+    "region": "TR",
+    "youtube_channel_url": "https://youtube.com/@kahramanbenim",
+    "return_video_id": "dQw4w9WgXcQ",
+    "return_playlist_id": "PLxxx"
+  },
+
+  "localization": {
+    "tr": {
+      "ui": {
+        "title": "Kayıp Hazine Macerası",
+        "start_button": "Maceraya Başla",
+        "continue_button": "Devam Et",
+        "restart_button": "Baştan Başla",
+        "youtube_return": "YouTube'a Dön",
+        "score_title": "Puanın",
+        "correct_answer": "Doğru!",
+        "wrong_answer": "Yanlış!",
+        "loading": "Yükleniyor...",
+        "time_left": "Kalan Süre",
+        "points": "puan"
+      }
+    },
+    "en": {
+      "ui": {
+        "title": "Lost Treasure Adventure",
+        "start_button": "Start Adventure",
+        "continue_button": "Continue",
+        "restart_button": "Restart",
+        "youtube_return": "Return to YouTube",
+        "score_title": "Your Score",
+        "correct_answer": "Correct!",
+        "wrong_answer": "Wrong!",
+        "loading": "Loading...",
+        "time_left": "Time Left",
+        "points": "points"
+      }
+    }
+  },
+
+  "game_settings": {
+    "max_score": 1000,
+    "time_bonus_enabled": true,
+    "lives_system": false,
+    "save_progress": true,
+    "music_enabled": true,
+    "sound_effects": true,
+    "auto_redirect_seconds": 120,
+    "show_immediate_youtube_link": true
+  },
+
+  "story_flow": {
+    "start_step": "intro",
+    "steps": {
+      
+      "intro": {
+        "id": "intro",
+        "type": "story",
+        "title": "Gizemli Başlangıç",
+        "content": "YouTube videosunda gördüğün eski haritayı takip ederek gizemli bir mağaraya geldin. Mağaranın girişinde üç farklı yol var. Hangisini seçersen seç, kaderini değiştirecek...",
+        "background_image": "cave_entrance.jpg",
+        "background_music": "mysterious_ambient.mp3",
+        "character_emotion": "curious",
+        "display_duration": 5000,
+        "auto_continue": false,
+        "options": [
+          {
+            "id": "opt_1",
+            "text": "Sol tarafa git (Işıltılı kristaller görünüyor)",
+            "emoji": "💎",
+            "next_step": "crystal_path",
+            "immediate_points": 10,
+            "tooltip": "Kristaller değerli olabilir..."
+          },
+          {
+            "id": "opt_2", 
+            "text": "Orta yola devam et (Su sesleri geliyor)",
+            "emoji": "🌊",
+            "next_step": "water_path",
+            "immediate_points": 15,
+            "tooltip": "Su hayat demektir"
+          },
+          {
+            "id": "opt_3",
+            "text": "Sağ tarafa yönel (Rüzgar esiyor)",
+            "emoji": "🌪️",
+            "next_step": "wind_path", 
+            "immediate_points": 5,
+            "tooltip": "Rüzgar nereden geliyor?"
+          }
+        ],
+        "requirements": null,
+        "effects": {
+          "set_variables": {
+            "journey_started": true,
+            "start_time": "current_timestamp"
+          }
+        }
+      },
+
+      "crystal_path": {
+        "id": "crystal_path",
+        "type": "question",
+        "title": "Kristal Bilmeceesi",
+        "content": "Kristaller arasında eski bir yazıt var: 'Sadece matematik bilgini kanıtlarsan yol açılır.' Yazıtın altında bir soru beliriyor...",
+        "question": {
+          "text": "Videoda tanıttığım akıllı saat hangi özelliği ile öne çıkıyor?",
+          "type": "multiple_choice",
+          "time_limit": 30,
+          "options": [
+            {
+              "id": "a",
+              "text": "7 gün pil ömrü",
+              "is_correct": true,
+              "points": 50,
+              "explanation": "Evet! Videoda bahsettiğim en önemli özellik buydu."
+            },
+            {
+              "id": "b", 
+              "text": "Su geçirmez",
+              "is_correct": false,
+              "points": 0,
+              "explanation": "Hayır, bu temel bir özellik, asıl öne çıkan yanı değil."
+            },
+            {
+              "id": "c",
+              "text": "Bluetooth bağlantı",
+              "is_correct": false,
+              "points": 0,
+              "explanation": "Bu da standart bir özellik."
+            },
+            {
+              "id": "d",
+              "text": "Dokunmatik ekran",
+              "is_correct": false,
+              "points": 0,
+              "explanation": "Artık tüm akıllı saatlerde var."
+            }
+          ]
+        },
+        "success_step": "crystal_chamber",
+        "failure_step": "crystal_trap",
+        "background_image": "crystal_cave.jpg",
+        "sound_effect": "crystal_chime.mp3"
+      },
+
+      "crystal_chamber": {
+        "id": "crystal_chamber",
+        "type": "story",
+        "title": "Kristal Hazine Odası",
+        "content": "Doğru cevap! Kristaller parladı ve gizli bir oda açıldı. İçeride antik bir sandık var. Ama dikkat et, sandığın etrafında tuhaf bir enerji var...",
+        "background_image": "treasure_chamber.jpg",
+        "display_duration": 4000,
+        "options": [
+          {
+            "id": "chest_open",
+            "text": "Sandığı aç",
+            "next_step": "math_challenge",
+            "immediate_points": 20,
+            "tooltip": "Cesaretli seçim!"
+          },
+          {
+            "id": "examine_first",
+            "text": "Önce sandığı incele",
+            "next_step": "examination_bonus",
+            "immediate_points": 30,
+            "tooltip": "Dikkatli yaklaşım"
+          }
+        ],
+        "effects": {
+          "add_to_inventory": ["crystal_key"],
+          "set_variables": {
+            "found_crystal_chamber": true
+          }
+        }
+      },
+
+      "math_challenge": {
+        "id": "math_challenge", 
+        "type": "question",
+        "title": "Antik Matematik Muamması",
+        "content": "Sandık açıldı! İçinden eski bir parşömen çıktı. Üzerinde matematiksel bir bulmaca var. Bu soruyu çözersen hazineye ulaşabilirsin!",
+        "question": {
+          "text": "Bir tüccar 3 gün boyunca her gün satışını ikiye katlıyor. İlk gün 5 ürün sattı. 3. gün sonunda toplam kaç ürün satmış olur?",
+          "type": "multiple_choice",
+          "time_limit": 45,
+          "options": [
+            {
+              "id": "a",
+              "text": "35",
+              "is_correct": true,
+              "points": 100,
+              "explanation": "Doğru! 1.gün=5, 2.gün=10, 3.gün=20. Toplam: 5+10+20=35"
+            },
+            {
+              "id": "b",
+              "text": "30", 
+              "is_correct": false,
+              "points": 10,
+              "explanation": "Yaklaştın ama toplama dikkat et."
+            },
+            {
+              "id": "c",
+              "text": "40",
+              "is_correct": false, 
+              "points": 10,
+              "explanation": "Çok yüksek, hesaplamayı kontrol et."
+            },
+            {
+              "id": "d",
+              "text": "20",
+              "is_correct": false,
+              "points": 5,
+              "explanation": "Bu sadece 3. günün satışı."
+            }
+          ]
+        },
+        "success_step": "treasure_found",
+        "failure_step": "second_chance",
+        "hint": "Her gün önceki günün 2 katı sat, sonra hepsini topla!",
+        "background_image": "ancient_scroll.jpg"
+      },
+
+      "treasure_found": {
+        "id": "treasure_found",
+        "type": "ending",
+        "ending_type": "happy",
+        "title": "🎉 Hazineyi Buldun! 🎉",
+        "content": "Tebrikler! Matematiksel zekân sayesinde antik hazineyi buldun. Sandıktan altınlar, değerli taşlar ve en önemlisi bilgi dolu antik kitaplar çıktı. Bu macera sana çok şey öğretti!",
+        "background_image": "treasure_victory.jpg",
+        "background_music": "victory_fanfare.mp3",
+        "celebration_animation": "gold_rain",
+        "final_bonus_points": 200,
+        "achievements": [
+          "Kristal Ustası", 
+          "Matematik Dehası",
+          "Hazine Avcısı"
+        ],
+        "unlocked_content": [
+          "bonus_video_access",
+          "secret_product_discount"
+        ]
+      },
+
+      "water_path": {
+        "id": "water_path",
+        "type": "story", 
+        "title": "Yeraltı Nehri",
+        "content": "Su seslerini takip ederek bir yeraltı nehrine vardın. Nehrin üzerinde eski bir köprü var, ama köprü çok eski görünüyor...",
+        "background_image": "underground_river.jpg",
+        "options": [
+          {
+            "id": "cross_bridge",
+            "text": "Köprüden geç",
+            "next_step": "bridge_question",
+            "immediate_points": 25
+          },
+          {
+            "id": "swim_across", 
+            "text": "Nehri yüzerek geç",
+            "next_step": "swimming_challenge",
+            "immediate_points": 15
+          },
+          {
+            "id": "find_alternative",
+            "text": "Başka yol ara",
+            "next_step": "alternative_discovery",
+            "immediate_points": 35
+          }
+        ]
+      },
+
+      "bridge_question": {
+        "id": "bridge_question",
+        "type": "question", 
+        "title": "Köprü Bekçisinin Sorusu",
+        "content": "Köprüye yaklaştığında yaşlı bir köprü bekçisi belirdi: 'Bu köprüden geçmek istiyorsan, bilgini kanıtlamalısın!'",
+        "question": {
+          "text": "8 + 9 = ?",
+          "type": "multiple_choice",
+          "time_limit": 20,
+          "options": [
+            {
+              "id": "a",
+              "text": "15",
+              "is_correct": false,
+              "points": 0
+            },
+            {
+              "id": "b", 
+              "text": "17",
+              "is_correct": true,
+              "points": 30
+            },
+            {
+              "id": "c",
+              "text": "16", 
+              "is_correct": false,
+              "points": 0
+            },
+            {
+              "id": "d",
+              "text": "18",
+              "is_correct": false,
+              "points": 0
+            }
+          ]
+        },
+        "success_step": "across_bridge",
+        "failure_step": "bridge_collapse"
+      },
+
+      "wind_path": {
+        "id": "wind_path",
+        "type": "story",
+        "title": "Rüzgar Tüneli", 
+        "content": "Rüzgarı takip ederek dar bir tünele girdin. Rüzgar giderek kuvvetleniyor ve tünelin sonunda bir ışık görünüyor...",
+        "background_image": "wind_tunnel.jpg",
+        "options": [
+          {
+            "id": "follow_wind",
+            "text": "Rüzgarı takip et",
+            "next_step": "wind_chamber",
+            "immediate_points": 20
+          },
+          {
+            "id": "resist_wind",
+            "text": "Rüzgara karşı yürü", 
+            "next_step": "resistance_test",
+            "immediate_points": 40
+          }
+        ]
+      },
+
+      "final_choice": {
+        "id": "final_choice",
+        "type": "story",
+        "title": "Son Karar",
+        "content": "Tüm yollar buraya çıkıyor. Karşında üç kapı var: Altın Kapı, Gümüş Kapı ve Bronz Kapı. Her biri farklı bir sona götürüyor...",
+        "background_image": "three_doors.jpg",
+        "options": [
+          {
+            "id": "gold_door",
+            "text": "Altın Kapı",
+            "next_step": "treasure_found",
+            "required_score": 200,
+            "tooltip": "En değerli ödül"
+          },
+          {
+            "id": "silver_door", 
+            "text": "Gümüş Kapı",
+            "next_step": "knowledge_ending",
+            "required_score": 100,
+            "tooltip": "Bilgi hazinesi"
+          },
+          {
+            "id": "bronze_door",
+            "text": "Bronz Kapı", 
+            "next_step": "experience_ending",
+            "required_score": 50,
+            "tooltip": "Deneyim kazanımı"
+          }
+        ]
+      },
+
+      "knowledge_ending": {
+        "id": "knowledge_ending",
+        "type": "ending",
+        "ending_type": "educational",
+        "title": "🧠 Bilgi Hazinesi 🧠",
+        "content": "Gümüş kapıyı seçtin ve antik bir kütüphane keşfettin. Burada öğrendiğin bilgiler sana hayat boyu fayda sağlayacak!",
+        "final_bonus_points": 150,
+        "achievements": ["Bilgi Arayıcısı"]
+      },
+
+      "experience_ending": {
+        "id": "experience_ending", 
+        "type": "ending",
+        "ending_type": "neutral",
+        "title": "🎒 Deneyim Kazandın 🎒",
+        "content": "Bronz kapı seni güvenli çıkışa götürdü. Hazine bulamadın ama bu macera sana değerli deneyimler kazandırdı!",
+        "final_bonus_points": 100,
+        "achievements": ["Maceracı"]
+      }
+    }
+  },
+
+  "scoring_system": {
+    "point_categories": {
+      "choice_points": "Seçim puanları",
+      "question_points": "Soru puanları", 
+      "time_bonus": "Zaman bonusu",
+      "final_bonus": "Final bonusu"
+    },
+    "grade_levels": [
+      {
+        "min_score": 0,
+        "max_score": 99,
+        "grade": "C",
+        "title": "Acemi Maceracı",
+        "message": "Başlangıç için fena değil!"
+      },
+      {
+        "min_score": 100,
+        "max_score": 299, 
+        "grade": "B",
+        "title": "Deneyimli Kaşif",
+        "message": "İyi iş çıkardın!"
+      },
+      {
+        "min_score": 300,
+        "max_score": 500,
+        "grade": "A",
+        "title": "Usta Maceracı", 
+        "message": "Harika performans!"
+      },
+      {
+        "min_score": 501,
+        "max_score": 1000,
+        "grade": "S",
+        "title": "Efsane Kahraman",
+        "message": "Mükemmel! Sen gerçek bir kahramansın!"
+      }
+    ]
+  },
+
+  "analytics": {
+    "track_events": [
+      "story_started",
+      "choice_made", 
+      "question_answered",
+      "ending_reached",
+      "youtube_returned"
+    ],
+    "user_data": {
+      "save_score": true,
+      "save_choices": true,
+      "save_time_spent": true,
+      "anonymous": true
+    }
+  },
+
+  "assets": {
+    "images": {
+      "base_path": "assets/images/",
+      "required_files": [
+        "cave_entrance.jpg",
+        "crystal_cave.jpg", 
+        "treasure_chamber.jpg",
+        "underground_river.jpg",
+        "three_doors.jpg"
+      ]
+    },
+    "sounds": {
+      "base_path": "assets/sounds/",
+      "background_music": [
+        "mysterious_ambient.mp3",
+        "victory_fanfare.mp3"
+      ],
+      "effects": [
+        "crystal_chime.mp3",
+        "water_flow.mp3"
+      ]
+    }
+  }
+}
