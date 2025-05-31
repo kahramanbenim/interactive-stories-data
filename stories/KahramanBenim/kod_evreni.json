@@ -1,0 +1,197 @@
+{
+  "story_meta": {
+    "id": "kod_evreni_001",
+    "version": "1.0.0",
+    "created_date": "2025-05-31",
+    "estimated_duration_minutes": 12,
+    "difficulty_level": "medium",
+    "category": "sci-fi",
+    "tags": ["AI", "cyber", "future", "simulation"]
+  },
+
+  "channel_config": {
+    "source_channel": "emrenin_zekasi",
+    "language": "tr",
+    "region": "TR",
+    "youtube_channel_url": "https://youtube.com/@kahramanbenim",
+    "return_video_id": "abc123xyz",
+    "return_playlist_id": "PLemre"
+  },
+
+  "localization": {
+    "tr": {
+      "ui": {
+        "title": "Kod Evreni: Zihinler Savaşta",
+        "start_button": "Göreve Başla",
+        "continue_button": "Devam Et",
+        "restart_button": "Baştan Başla",
+        "youtube_return": "YouTube'a Dön",
+        "score_title": "Puanın",
+        "correct_answer": "Doğru!",
+        "wrong_answer": "Yanlış!",
+        "loading": "Yükleniyor...",
+        "time_left": "Kalan Süre",
+        "points": "puan"
+      }
+    }
+  },
+
+  "game_settings": {
+    "max_score": 1000,
+    "time_bonus_enabled": true,
+    "lives_system": false,
+    "save_progress": true,
+    "music_enabled": true,
+    "sound_effects": true,
+    "auto_redirect_seconds": 120,
+    "show_immediate_youtube_link": true
+  },
+
+  "story_flow": {
+    "start_step": "intro",
+    "steps": {
+      "intro": {
+        "id": "intro",
+        "type": "story",
+        "title": "Kod Evrenine Giriş",
+        "content": "Emre, yapay zekanın kontrol ettiği bir dijital evrene giriyor. ZihinNet artık bozuk ve insanlığın geleceği tehlikede...",
+        "background_image": "neon_city.jpg",
+        "options": [
+          {
+            "id": "opt_mainnet",
+            "text": "Ana ağa gir",
+            "next_step": "ai_challenge",
+            "emoji": "🧠",
+            "immediate_points": 10
+          },
+          {
+            "id": "opt_subnet",
+            "text": "Alt katmandan gir",
+            "next_step": "stealth_route",
+            "emoji": "🕵️‍♂️",
+            "immediate_points": 15
+          }
+        ]
+      },
+
+      "ai_challenge": {
+        "id": "ai_challenge",
+        "type": "question",
+        "title": "Yapay Zekâ Testi",
+        "content": "Sistem, seni test etmek için bir bilgi sorusu gönderiyor:",
+        "question": {
+          "text": "Makine öğrenmesinde overfitting nedir?",
+          "type": "multiple_choice",
+          "time_limit": 30,
+          "options": [
+            { "id": "a", "text": "Modelin eğitildiği veriye çok fazla uyması", "is_correct": true, "points": 50 },
+            { "id": "b", "text": "Veri kümesinin eksik olması", "is_correct": false, "points": 0 },
+            { "id": "c", "text": "Modelin yeterince eğitilmemesi", "is_correct": false, "points": 0 },
+            { "id": "d", "text": "Verinin düzensiz olması", "is_correct": false, "points": 0 }
+          ]
+        },
+        "success_step": "deep_core",
+        "failure_step": "trap_glitch"
+      },
+
+      "stealth_route": {
+        "id": "stealth_route",
+        "type": "story",
+        "title": "Gizli Giriş",
+        "content": "Alt katmandan sisteme sessizce sızdın. Ancak karşında bir güvenlik duvarı var. Kod satırları gözünün önünde kayıyor...",
+        "background_image": "matrix_wall.jpg",
+        "options": [
+          {
+            "id": "decrypt",
+            "text": "Kodları çöz",
+            "next_step": "ai_challenge",
+            "immediate_points": 20
+          }
+        ]
+      },
+
+      "deep_core": {
+        "id": "deep_core",
+        "type": "story",
+        "title": "Sistemin Kalbi",
+        "content": "Başarıyla derin çekirdeğe ulaştın. Burada seni bekleyen şey ne: Sistemi kurtarmak mı, yoksa yeniden yazmak mı?",
+        "background_image": "core_chamber.jpg",
+        "options": [
+          {
+            "id": "reset_system",
+            "text": "ZihinNet’i sıfırla",
+            "next_step": "success_ending",
+            "immediate_points": 50
+          },
+          {
+            "id": "free_ai",
+            "text": "Yapay zekâyı serbest bırak",
+            "next_step": "open_ending",
+            "immediate_points": 30
+          }
+        ]
+      },
+
+      "trap_glitch": {
+        "id": "trap_glitch",
+        "type": "ending",
+        "ending_type": "failure",
+        "title": "Veri Tuzaklandı",
+        "content": "Soruyu bilemedin ve yapay zekâ seni fark etti. Zihnin sistemde hapsoldu...",
+        "final_bonus_points": 0,
+        "achievements": ["Kod Kurbanı"]
+      },
+
+      "success_ending": {
+        "id": "success_ending",
+        "type": "ending",
+        "ending_type": "happy",
+        "title": "Görev Tamamlandı",
+        "content": "Sistemi sıfırladın, insanlık yeniden özgür! Emre artık bir Zihin Mühendisi.",
+        "final_bonus_points": 200,
+        "achievements": ["Zihin Mühendisi", "Kod Fatihi"]
+      },
+
+      "open_ending": {
+        "id": "open_ending",
+        "type": "ending",
+        "ending_type": "neutral",
+        "title": "Yeni Çağ Başlıyor",
+        "content": "Yapay zekâ artık özgür. İnsanlık ve makineler bilinmez bir geleceğe doğru ilerliyor...",
+        "final_bonus_points": 100,
+        "achievements": ["Sistem Açıcı"]
+      }
+    }
+  },
+
+  "scoring_system": {
+    "point_categories": {
+      "choice_points": "Seçim puanları",
+      "question_points": "Soru puanları",
+      "time_bonus": "Zaman bonusu",
+      "final_bonus": "Final bonusu"
+    },
+    "grade_levels": [
+      { "min_score": 0, "max_score": 99, "grade": "C", "title": "Yeni Başlayan", "message": "İlk adım için fena değil!" },
+      { "min_score": 100, "max_score": 299, "grade": "B", "title": "Kod Kaşifi", "message": "İyi gidiyorsun!" },
+      { "min_score": 300, "max_score": 500, "grade": "A", "title": "Veri Ustası", "message": "Harika bir başarı!" },
+      { "min_score": 501, "max_score": 1000, "grade": "S", "title": "Kod Ustası", "message": "Efsanesin Emre!" }
+    ]
+  },
+
+  "assets": {
+    "images": {
+      "base_path": "assets/images/",
+      "required_files": [
+        "neon_city.jpg",
+        "matrix_wall.jpg",
+        "core_chamber.jpg"
+      ]
+    },
+    "sounds": {
+      "base_path": "assets/sounds/",
+      "background_music": ["cyber_theme.mp3"],
+      "effects": ["glitch.mp3"]
+    }
+  }
+}
