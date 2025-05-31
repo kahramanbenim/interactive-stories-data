@@ -1,0 +1,221 @@
+{
+  "story_meta": {
+    "id": "peri_macera_001",
+    "version": "1.0.0",
+    "created_date": "2025-05-31",
+    "estimated_duration_minutes": 8,
+    "difficulty_level": "easy",
+    "category": "fantasy",
+    "tags": ["magic", "adventure", "kids", "choices"]
+  },
+
+  "channel_config": {
+    "source_channel": "elifin_masallari",
+    "language": "tr",
+    "region": "TR",
+    "youtube_channel_url": "https://youtube.com/@elifinmasallari",
+    "return_video_id": "peri123kik",
+    "return_playlist_id": "PLelif"
+  },
+
+  "localization": {
+    "tr": {
+      "ui": {
+        "title": "Elif'in Peri Macerası",
+        "start_button": "Macera Başlasın!",
+        "continue_button": "Devam Et",
+        "restart_button": "Baştan Başla",
+        "youtube_return": "YouTube'a Dön",
+        "score_title": "Puanın",
+        "correct_answer": "Doğru!",
+        "wrong_answer": "Yanlış!",
+        "loading": "Yükleniyor...",
+        "time_left": "Kalan Süre",
+        "points": "puan"
+      }
+    }
+  },
+
+  "game_settings": {
+    "max_score": 500,
+    "time_bonus_enabled": false,
+    "lives_system": false,
+    "save_progress": true,
+    "music_enabled": true,
+    "sound_effects": true,
+    "auto_redirect_seconds": 120,
+    "show_immediate_youtube_link": false
+  },
+
+  "story_flow": {
+    "start_step": "giris",
+    "steps": {
+      "giris": {
+        "id": "giris",
+        "type": "story",
+        "title": "Gizemli Ormana Giriş",
+        "content": "Elif Hifa bir sabah ormanın kenarında yürürken ışıl ışıl parlayan bir yol fark eder. Bu yol, gizemli Peri Ormanı'na çıkar!",
+        "background_image": "forest_path.jpg",
+        "options": [
+          {
+            "id": "gir",
+            "text": "Peri Ormanına gir",
+            "emoji": "🧚",
+            "next_step": "peri_karsilama",
+            "immediate_points": 10
+          },
+          {
+            "id": "don",
+            "text": "Eve geri dön",
+            "emoji": "🏠",
+            "next_step": "cikis_final",
+            "immediate_points": 0
+          }
+        ]
+      },
+
+      "peri_karsilama": {
+        "id": "peri_karsilama",
+        "type": "story",
+        "title": "Periyle Tanışma",
+        "content": "Bir peri belirdi! Adı Zuzu. Elif'e üç yol sunar: Altın Bahçe, Renkli Mağara ve Zıpır Tavşan Yolu.",
+        "background_image": "fairy_garden.jpg",
+        "options": [
+          {
+            "id": "altin",
+            "text": "Altın Bahçeye git",
+            "next_step": "altin_soru",
+            "immediate_points": 20
+          },
+          {
+            "id": "renkli",
+            "text": "Renkli Mağaraya git",
+            "next_step": "renkli_soru",
+            "immediate_points": 20
+          },
+          {
+            "id": "zipir",
+            "text": "Zıpır Tavşan Yoluna git",
+            "next_step": "zipir_soru",
+            "immediate_points": 20
+          }
+        ]
+      },
+
+      "altin_soru": {
+        "id": "altin_soru",
+        "type": "question",
+        "title": "Altın Bahçe Bilmecesi",
+        "content": "Bahçedeki çiçekler şifreli konuşuyor. Ne diyorlar?",
+        "question": {
+          "text": "Hangi hayvan uçabilir?",
+          "type": "multiple_choice",
+          "time_limit": 20,
+          "options": [
+            { "id": "a", "text": "Kedi", "is_correct": false, "points": 0 },
+            { "id": "b", "text": "Kuş", "is_correct": true, "points": 50 },
+            { "id": "c", "text": "Köpek", "is_correct": false, "points": 0 }
+          ]
+        },
+        "success_step": "final_iyi",
+        "failure_step": "final_normal"
+      },
+
+      "renkli_soru": {
+        "id": "renkli_soru",
+        "type": "question",
+        "title": "Renkli Mağara Sorusu",
+        "content": "Mağaranın duvarları sayılarla dolu. Elif'in çözmesi gereken bir bilmece var!",
+        "question": {
+          "text": "2 + 3 = ?",
+          "type": "multiple_choice",
+          "time_limit": 20,
+          "options": [
+            { "id": "a", "text": "4", "is_correct": false, "points": 0 },
+            { "id": "b", "text": "5", "is_correct": true, "points": 50 },
+            { "id": "c", "text": "6", "is_correct": false, "points": 0 }
+          ]
+        },
+        "success_step": "final_iyi",
+        "failure_step": "final_normal"
+      },
+
+      "zipir_soru": {
+        "id": "zipir_soru",
+        "type": "question",
+        "title": "Zıpır Tavşan’ın Sorusu",
+        "content": "Tavşan bir bilmece soruyor!",
+        "question": {
+          "text": "Hangi meyve kırmızıdır?",
+          "type": "multiple_choice",
+          "time_limit": 20,
+          "options": [
+            { "id": "a", "text": "Elma", "is_correct": true, "points": 50 },
+            { "id": "b", "text": "Muz", "is_correct": false, "points": 0 },
+            { "id": "c", "text": "Karpuz", "is_correct": false, "points": 0 }
+          ]
+        },
+        "success_step": "final_iyi",
+        "failure_step": "final_normal"
+      },
+
+      "final_iyi": {
+        "id": "final_iyi",
+        "type": "ending",
+        "ending_type": "happy",
+        "title": "🎉 Harika Bir Macera!",
+        "content": "Elif doğru cevap verdi ve Peri Ormanı’nın gizli bahçesine ulaştı! Orada minik bir peri kanadı kazandı!",
+        "final_bonus_points": 100,
+        "achievements": ["Peri Arkadaşı", "Bilmece Ustası"]
+      },
+
+      "final_normal": {
+        "id": "final_normal",
+        "type": "ending",
+        "ending_type": "neutral",
+        "title": "Macera Bitti",
+        "content": "Elif Peri Ormanı'ndan çıktı. Çok güzel bir gün geçirdi ama bir sonraki maceraya daha hazırlıklı olacak!",
+        "final_bonus_points": 50,
+        "achievements": ["Cesur Kız"]
+      },
+
+      "cikis_final": {
+        "id": "cikis_final",
+        "type": "ending",
+        "ending_type": "neutral",
+        "title": "Geri Döndün",
+        "content": "Elif ormana girmedi ama evine mutlu döndü. Belki başka bir gün tekrar dener!",
+        "final_bonus_points": 10,
+        "achievements": ["Meraklı Kız"]
+      }
+    }
+  },
+
+  "scoring_system": {
+    "point_categories": {
+      "choice_points": "Seçim puanları",
+      "question_points": "Soru puanları",
+      "final_bonus": "Final bonusu"
+    },
+    "grade_levels": [
+      { "min_score": 0, "max_score": 49, "grade": "C", "title": "Minik Kaşif", "message": "İlk macera güzel geçti!" },
+      { "min_score": 50, "max_score": 149, "grade": "B", "title": "Cesur Kaşif", "message": "Harika işler başardın!" },
+      { "min_score": 150, "max_score": 500, "grade": "A", "title": "Peri Kahramanı", "message": "Sen gerçek bir kahramansın Elif!" }
+    ]
+  },
+
+  "assets": {
+    "images": {
+      "base_path": "assets/images/",
+      "required_files": [
+        "forest_path.jpg",
+        "fairy_garden.jpg"
+      ]
+    },
+    "sounds": {
+      "base_path": "assets/sounds/",
+      "background_music": ["happy_fairy.mp3"],
+      "effects": ["sparkle.mp3"]
+    }
+  }
+}
